@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/screens/home/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -70,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _signInWithEmailAndPassword() async {
-    /*final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseAuth _auth = FirebaseAuth.instance;
     FirebaseUser user;
     try {
       user = (await _auth.signInWithEmailAndPassword(
@@ -90,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       showAlertDialog(context);
     }
-    */
+    
   }
 
   showAlertDialog(BuildContext context) {

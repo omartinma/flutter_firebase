@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_firebase/model/serie.dart';
 import 'package:flutter_firebase/services/series/series_api_controller.dart';
 import 'package:flutter_firebase/services/series/series_db_controller.dart';

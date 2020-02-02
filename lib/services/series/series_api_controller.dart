@@ -19,7 +19,6 @@ class SeriesAPIController {
 
   Future<List<Serie>> getSeries(String name) async {
     if (name == "") return new List<Serie>();
-    var start = DateTime.now();
     String fixSearchUrl = "https://api.themoviedb.org/3/search/tv?";
     String apiKeyUrl = "api_key=" + Constants.IMDB_API_KEY;
     String parametersSearchUrl = "&language=en-US&query=" + name + "&page=1";

@@ -27,8 +27,6 @@ dependencies:
   firebase_auth:
   sqflite:
   path_provider:
-  shared_preferences:
-
 
 
 dev_dependencies:

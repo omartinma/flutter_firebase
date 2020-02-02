@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: <String, WidgetBuilder>{
-      // Set routes for using the Navigator.
-      '/home': (BuildContext context) => new HomePage(),
-      '/home/series_home': (BuildContext context) => new SeriesHomePage(),
-      '/login': (BuildContext context) => new LoginPage()
-    },
+        // Set routes for using the Navigator.
+        '/home': (BuildContext context) => new HomePage(),
+        '/home/series_home': (BuildContext context) => new SeriesHomePage(),
+        '/login': (BuildContext context) => new LoginPage()
+      },
       home: FutureBuilder<FirebaseUser>(
         future: UserController().getUserAuthenticated(),
         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
             if (snapshot.error != null) {
               return Text(snapshot.error.toString());
             }
-            //UserController().saveUserData(snapshot.data);
             return snapshot.hasData ? HomePage() : LoginPage();
           } else {
             return CircularProgressIndicator();
@@ -40,5 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

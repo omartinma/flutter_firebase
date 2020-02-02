@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/screens/home/home_page.dart';
 import 'package:flutter_firebase/screens/login/login_page.dart';
+import 'package:flutter_firebase/screens/series/series_home.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
 
 void main() => runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
       // Set routes for using the Navigator.
       '/home': (BuildContext context) => new HomePage(),
+      '/home/series_home': (BuildContext context) => new SeriesHomePage(),
       '/login': (BuildContext context) => new LoginPage()
     },
       home: FutureBuilder<FirebaseUser>(

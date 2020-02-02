@@ -25,6 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   cloud_firestore:
   firebase_auth:
+  sqflite:
+  path_provider:
+  shared_preferences:
+
+
 
 dev_dependencies:
   flutter_test:

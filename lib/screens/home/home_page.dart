@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.all(20.0),
                       splashColor: Colors.blue,
                       onPressed: () {
+                        Navigator.of(context).pushNamed('/home/series_home');
                       },
                       child: Text(
                         "TV SHOWS",

@@ -14,13 +14,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
         body: Container(
             color: Colors.white,
             child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("Let´s stop mess up with infinty to-do text list", textAlign: TextAlign.center,style: TextStyle(fontSize: 30, ),),
+                //Logo
+                Container(
+                child: Image.asset("assets/images/flutter_madrid.jpeg"),
+                padding: EdgeInsets.only(top: 150, left: 30, right: 30)),
                 // Form: user y pwd
                 Container(
                   margin:

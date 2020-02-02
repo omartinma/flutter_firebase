@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomPadding: false,
         body: Container(
             color: Colors.white,
             child: new Column(
@@ -22,8 +22,8 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 //Logo
                 Container(
-                child: Image.asset("assets/images/flutter_madrid.jpeg"),
-                padding: EdgeInsets.only(top: 150, left: 30, right: 30)),
+                    child: Image.asset("assets/images/flutter_madrid.jpeg"),
+                    padding: EdgeInsets.only(top: 150, left: 30, right: 30)),
                 // Form: user y pwd
                 Container(
                   margin:
@@ -34,13 +34,13 @@ class _LoginPageState extends State<LoginPage> {
                           autocorrect: false,
                           controller: _emailController,
                           decoration: InputDecoration(
-                              labelText: "Usuario",
+                              labelText: "User",
                               icon: Icon(Icons.account_circle))),
                       TextField(
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                            labelText: "Contraseña", icon: Icon(Icons.lock)),
+                            labelText: "Password", icon: Icon(Icons.lock)),
                       )
                     ],
                   ),
@@ -83,45 +83,39 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       ))
           .user;
-    } catch (e) {
-
-    }
+    } catch (e) {}
 
     if (user != null) {
-     // setState(() {
-        Navigator.of(context).pushReplacementNamed('/home');
-      //});
+      Navigator.of(context).pushReplacementNamed('/home');
     } else {
       showAlertDialog(context);
     }
-    
   }
 
   showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop(); // dismiss dialog
+      },
+    );
 
-  // set up the button
-  Widget okButton = FlatButton(
-    child: Text("OK"),
-    onPressed: () { 
-      Navigator.of(context).pop(); // dismiss dialog
-    },
-  );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Login Error"),
+      content: Text("Verify the input data"),
+      actions: [
+        okButton,
+      ],
+    );
 
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Error login"),
-    content: Text("Comprueba que has introducido bien email y contraseña"),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }

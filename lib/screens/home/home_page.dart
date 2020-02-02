@@ -28,9 +28,7 @@ class _HomePageState extends State<HomePage> {
             onSelected: (value) async {
               bool result = await UserController().signOut();
               if (result) {
-                //setState(() {
                    Navigator.of(context).pushReplacementNamed('/login');
-                //});
               }
             },
           ),

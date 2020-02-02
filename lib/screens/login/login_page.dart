@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/screens/home/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -85,16 +84,13 @@ class _LoginPageState extends State<LoginPage> {
       ))
           .user;
     } catch (e) {
-      
+
     }
 
     if (user != null) {
-      setState(() {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-      });
+     // setState(() {
+        Navigator.of(context).pushReplacementNamed('/home');
+      //});
     } else {
       showAlertDialog(context);
     }

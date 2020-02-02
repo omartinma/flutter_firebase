@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      routes: <String, WidgetBuilder>{
+      // Set routes for using the Navigator.
+      '/home': (BuildContext context) => new HomePage(),
+      '/login': (BuildContext context) => new LoginPage()
+    },
       home: FutureBuilder<FirebaseUser>(
         future: UserController().getUserAuthenticated(),
         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {

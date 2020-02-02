@@ -84,7 +84,9 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       ))
           .user;
-    } catch (e) {}
+    } catch (e) {
+      
+    }
 
     if (user != null) {
       setState(() {

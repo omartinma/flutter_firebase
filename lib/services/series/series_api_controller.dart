@@ -6,15 +6,15 @@ import 'package:flutter_firebase/services/series/series_controller.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
 import 'package:http/http.dart' as http;
 
-
 class SeriesAPIController {
-
   dynamic getGenres() async {
     //to do: init beginning app instead of everytime doing a call -> it is not changing often
     var genreResponse = await http.get(
-        "https://api.themoviedb.org/3/genre/tv/list?api_key="+Constants.IMDB_API_KEY+"&language=en-US");
+        "https://api.themoviedb.org/3/genre/tv/list?api_key=" +
+            Constants.IMDB_API_KEY +
+            "&language=en-US");
     Map<String, dynamic> parsedGenreJson = json.decode(genreResponse.body);
-    return  parsedGenreJson["genres"];
+    return parsedGenreJson["genres"];
   }
 
   Future<List<Serie>> getSeries(String name) async {
@@ -68,7 +68,7 @@ class SeriesAPIController {
     return series;
   }
 
-    saveSerie(Serie serie) async {
+  saveSerie(Serie serie) async {
     String userUid = await UserController().getUserUID();
     var series = Firestore.instance.collection("users/" + userUid + "/series");
     series.document(serie.id.toString()).setData(serie.toMap());
@@ -76,7 +76,7 @@ class SeriesAPIController {
 
   removeSerie(String id) async {
     String userUid = await UserController().getUserUID();
-    var series =  Firestore.instance.collection("users/" + userUid + "/series");
+    var series = Firestore.instance.collection("users/" + userUid + "/series");
     series.document(id).delete();
   }
 }

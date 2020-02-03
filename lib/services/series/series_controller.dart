@@ -12,8 +12,7 @@ class SeriesController {
     return _singleton;
   }
 
-  SeriesController._constructor() {
-  }
+  SeriesController._constructor();
 
   void loadCache() async {
     var list = await SeriesDBController.instance.getAllSeries();

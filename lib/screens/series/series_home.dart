@@ -24,8 +24,7 @@ class _SeriesHomePageState extends State<SeriesHomePage> {
           onPressed:() => Navigator.pop(context, false),
         )
       ),
-      body: _children[_currentIndex],
-      
+      body: _children[_currentIndex], 
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,

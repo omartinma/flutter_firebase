@@ -10,14 +10,7 @@ class SeriesHomePage extends StatefulWidget {
 
 class _SeriesHomePageState extends State<SeriesHomePage> {
   int _currentIndex = 0;
-  List<Widget> pages = List<Widget>();
-
-    @override
-  void initState() {
-    pages.add(SeriesSearchPage());
-    pages.add(SeriesSavedPage());
-    super.initState();
-  }
+  final List<Widget> _tabPages = [new SeriesSearchPage(), new SeriesSavedPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +24,7 @@ class _SeriesHomePageState extends State<SeriesHomePage> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: pages,
+        children: _tabPages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,

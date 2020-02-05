@@ -25,12 +25,18 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
 
         //Loading
         if (projectSnap.connectionState == ConnectionState.waiting) {
-          return SizedBox(
-            child: new CircularProgressIndicator(
-                valueColor: new AlwaysStoppedAnimation(Colors.blue),
-                strokeWidth: 5.0),
-            height: 50.0,
-            width: 50.0,
+          return Center(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  child: new CircularProgressIndicator(
+                      valueColor: new AlwaysStoppedAnimation(Colors.blue),
+                      strokeWidth: 5.0),
+                  height: 50.0,
+                  width: 50.0,
+                ),
+              ],
+            ),
           );
         }
 
@@ -41,21 +47,21 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
                   childAspectRatio: 0.7,
                   mainAxisSpacing: 5,
                   crossAxisCount: 2),
-                  itemCount: projectSnap.data.length,
-              itemBuilder: (context, index) {       
-                  Serie serie = projectSnap.data[index];
-                  return new SavedSerieCard(
-                      serie: serie,
-                      onToDoChanged: (Serie serie) {
-                        setState(() {
-                          SeriesController().addRemoveSerie(serie);
-                        });
+              itemCount: projectSnap.data.length,
+              itemBuilder: (context, index) {
+                Serie serie = projectSnap.data[index];
+                return new SavedSerieCard(
+                    serie: serie,
+                    onToDoChanged: (Serie serie) {
+                      setState(() {
+                        SeriesController().addRemoveSerie(serie);
                       });
+                    });
               });
         } else {
           // Not results
           return Container(
-            child: Text("Not results found"),
+            child: Text("Not movies in to-do"),
           );
         }
       },

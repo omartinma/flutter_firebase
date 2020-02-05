@@ -41,8 +41,8 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
                   childAspectRatio: 0.7,
                   mainAxisSpacing: 5,
                   crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                if (index < projectSnap.data.length) {
+                  itemCount: projectSnap.data.length,
+              itemBuilder: (context, index) {       
                   Serie serie = projectSnap.data[index];
                   return new SavedSerieCard(
                       serie: serie,
@@ -51,7 +51,6 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
                           SeriesController().addRemoveSerie(serie);
                         });
                       });
-                }
               });
         } else {
           // Not results

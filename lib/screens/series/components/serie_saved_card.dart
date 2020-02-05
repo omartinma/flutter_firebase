@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/model/serie.dart';
 
@@ -25,14 +26,14 @@ class _SavedSerieCardState extends State<SavedSerieCard> {
               child: Stack(
                 children: <Widget>[
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: 
-                    Image.network(
-                      widget.serie.posterPath,
-                      fit: BoxFit.cover,
-                      height: 1000,
-                    ),
-                  ),
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: CachedNetworkImage(
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        imageUrl: widget.serie.posterPath,
+                        fit: BoxFit.cover,
+                        height: 1000,
+                      )),
                   Positioned(
                     top: 0,
                     child: IconButton(
@@ -51,27 +52,5 @@ class _SavedSerieCardState extends State<SavedSerieCard> {
             ),
           ),
         ]);
-  }
-
-  Widget buildMainContent() {
-    if (widget.serie.posterPath != null && widget.serie.posterPath.isNotEmpty) {
-      return buildCardWithPoster();
-    } else if (widget.serie.backdropPath != null &&
-        widget.serie.backdropPath.isNotEmpty) {
-      return new Image.network(
-        widget.serie.backdropPath,
-        height: 100,
-      );
-    } else {
-      return new Text(
-        widget.serie.name,
-      );
-    }
-  }
-
-  Widget buildCardWithPoster() {
-    return new Image.network(
-      widget.serie.posterPath,
-    );
   }
 }

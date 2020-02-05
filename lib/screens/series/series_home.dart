@@ -15,7 +15,6 @@ class _SeriesHomePageState extends State<SeriesHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SeriesController().loadCache();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,

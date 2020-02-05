@@ -38,14 +38,15 @@ class _SerieCardState extends State<SerieCard> {
   }
 
   Widget buildMainContent() {
+    var image = new Image.network(
+        widget.serie.backdropPath,
+        height: 100,
+      );
     if (widget.serie.posterPath != null && widget.serie.posterPath.isNotEmpty) {
       return buildCardWithPoster();
     } else if (widget.serie.backdropPath != null &&
         widget.serie.backdropPath.isNotEmpty) {
-      return new Image.network(
-        widget.serie.backdropPath,
-        height: 100,
-      );
+      return image;
     } else {
       return new Text(
         widget.serie.name,

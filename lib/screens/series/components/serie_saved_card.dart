@@ -26,7 +26,8 @@ class _SavedSerieCardState extends State<SavedSerieCard> {
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: Image.network(
+                    child: 
+                    Image.network(
                       widget.serie.posterPath,
                       fit: BoxFit.cover,
                       height: 1000,

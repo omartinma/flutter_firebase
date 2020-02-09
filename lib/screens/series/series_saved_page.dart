@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/model/serie.dart';
 import 'package:flutter_firebase/services/series/series_api_controller.dart';
 import 'package:flutter_firebase/services/series/series_controller.dart';
-
 import '../../services/user/user_controller.dart';
 import 'components/serie_saved_card.dart';
 

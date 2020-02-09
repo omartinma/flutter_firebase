@@ -4,6 +4,7 @@ import 'package:flutter_firebase/model/serie.dart';
 import 'package:flutter_firebase/services/series/series_api_controller.dart';
 import 'package:flutter_firebase/services/series/series_controller.dart';
 
+import '../../services/user/user_controller.dart';
 import 'components/serie_saved_card.dart';
 
 class SeriesSavedPage extends StatefulWidget {
@@ -13,9 +14,18 @@ class SeriesSavedPage extends StatefulWidget {
 }
 
 class _SeriesSavedPageState extends State<SeriesSavedPage> {
+  String userId;
+
+  @override
+  void initState() {
+    UserController().getUserUID().then((id) => setState(() => userId = id));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    if(userId == null) return Container();
+    return StreamBuilder(
       builder: (context, projectSnap) {
         //Nothing
         if (projectSnap.connectionState == ConnectionState.none &&
@@ -65,7 +75,7 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
           );
         }
       },
-      future: SeriesAPIController().getSavedSeries(),
+      stream: SeriesAPIController().savedSeriesFor(userId),
     );
   }
 }

@@ -90,4 +90,12 @@ class SeriesAPIController {
     }
     return series;
   }
+
+  Stream<List<Serie>> savedSeriesFor(String userId) {
+    var snap = Firestore.instance
+        .collection("users/" + userId + "/series")
+        .snapshots();
+    return snap.map((snapshot) =>
+        snapshot.documents.map((doc) => Serie.fromMap(doc.data)).toList());
+  }
 }

@@ -1,4 +1,5 @@
 # flutter_firebase
+Demo sample for meetup of Flutter Madrid (https://twitter.com/FlutterMadrid) using Flutter and Firebase.
  
 <img width="497" alt="1" src="https://user-images.githubusercontent.com/11978998/74112364-659d2400-4b9c-11ea-8cea-027d15cbeda4.png">
 <img width="497" alt="2" src="https://user-images.githubusercontent.com/11978998/74112366-69c94180-4b9c-11ea-9f99-30fa33ad57a0.png">

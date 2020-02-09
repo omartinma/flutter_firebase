@@ -5,3 +5,7 @@
 <img width="497" alt="3" src="https://user-images.githubusercontent.com/11978998/74112369-6cc43200-4b9c-11ea-982a-42b7304aacf9.png">
 <img width="497" alt="4" src="https://user-images.githubusercontent.com/11978998/74112370-6d5cc880-4b9c-11ea-9904-f54b6503e15d.png">
 <img width="497" alt="5" src="https://user-images.githubusercontent.com/11978998/74112372-6f268c00-4b9c-11ea-8545-c5c92d792982.png">
+
+# Requirements 1 #
+- Import in iOS project info.plist for GoogleServices
+- Create API key for IMDB(https://www.themoviedb.org/documentation/api) and add to constants file under lib/config/constants.dart

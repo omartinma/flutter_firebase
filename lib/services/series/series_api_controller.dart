@@ -79,4 +79,23 @@ class SeriesAPIController {
     var series = Firestore.instance.collection("users/" + userUid + "/series");
     series.document(id).delete();
   }
+
+    Future<List<Serie>> getSavedSeries() async {
+    String userUid = await UserController().getUserUID();
+    var snap = await Firestore.instance.collection("users/" + userUid + "/series").getDocuments();
+    var series = new List<Serie>();
+
+    for (var doc in snap.documents) {
+      series.add(Serie.fromMap(doc.data));
+    }
+    return series;
+  }
+
+  Stream<List<Serie>> savedSeriesFor(String userId) {
+    var snap = Firestore.instance
+        .collection("users/" + userId + "/series")
+        .snapshots();
+    return snap.map((snapshot) =>
+        snapshot.documents.map((doc) => Serie.fromMap(doc.data)).toList());
+  }
 }

@@ -81,8 +81,7 @@ class _SeriesSearchPageState extends State<SeriesSearchPage>
                       });          
               })
           );
-          
-              
+                
         } else {
           // Not results
           if (_query.isNotEmpty) {

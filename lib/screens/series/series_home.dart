@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/screens/series/series_saved_page.dart';
 import 'package:flutter_firebase/screens/series/series_search_page.dart';
-import 'package:flutter_firebase/services/series/series_controller.dart';
 
 class SeriesHomePage extends StatefulWidget {
   SeriesHomePage({Key key}) : super(key: key);
@@ -11,11 +10,10 @@ class SeriesHomePage extends StatefulWidget {
 
 class _SeriesHomePageState extends State<SeriesHomePage> {
   int _currentIndex = 0;
-  final List<Widget> _children = [new SeriesSearchPage(), new SeriesSavedPage()];
+  final List<Widget> _tabPages = [new SeriesSearchPage(), new SeriesSavedPage()];
 
   @override
   Widget build(BuildContext context) {
-    SeriesController().loadCache();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -24,7 +22,10 @@ class _SeriesHomePageState extends State<SeriesHomePage> {
           onPressed:() => Navigator.pop(context, false),
         )
       ),
-      body: _children[_currentIndex], 
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _tabPages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,

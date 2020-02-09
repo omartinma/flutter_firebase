@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/screens/home/home_page.dart';
+import 'package:flutter_firebase/screens/home/loading_page.dart';
 import 'package:flutter_firebase/screens/login/login_page.dart';
 import 'package:flutter_firebase/screens/series/series_home.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             }
             return snapshot.hasData ? HomePage() : LoginPage();
           } else {
-            return CircularProgressIndicator();
+            return LoadingPage();
           }
         },
       ),

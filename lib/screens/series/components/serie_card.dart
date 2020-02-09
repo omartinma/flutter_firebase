@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/model/serie.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SerieCard extends StatefulWidget {
   SerieCard({Key key, @required this.serie, @required this.onToDoChanged})
@@ -40,12 +40,6 @@ class _SerieCardState extends State<SerieCard> {
   Widget buildMainContent() {
     if (widget.serie.posterPath != null && widget.serie.posterPath.isNotEmpty) {
       return buildCardWithPoster();
-    } else if (widget.serie.backdropPath != null &&
-        widget.serie.backdropPath.isNotEmpty) {
-      return new Image.network(
-        widget.serie.backdropPath,
-        height: 100,
-      );
     } else {
       return new Text(
         widget.serie.name,
@@ -61,13 +55,14 @@ class _SerieCardState extends State<SerieCard> {
           padding: EdgeInsets.all(10),
           child: ClipRRect(
             borderRadius: new BorderRadius.circular(8.0),
-            child: Image.network(
-              widget.serie.posterPath,
-              height: 250.0,
-            ),
+            child: CachedNetworkImage(
+            placeholder: (context, url) => CircularProgressIndicator(),
+            imageUrl:
+                widget.serie.posterPath,
+                height: 250.0,
+          ),
           ),
         ),
-
         // Details part
         Expanded(
           child: Container(
@@ -81,11 +76,12 @@ class _SerieCardState extends State<SerieCard> {
                 buildGenreButton(),
                 Text(
                   "Vote: " + widget.serie.voteAverage.toString(),
-                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.bold),
                 ),
-                Expanded(             
+                Expanded(
                   child: Text(
-                    widget.serie.overview ,
+                    widget.serie.overview,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 10,
                     style: TextStyle(color: Colors.grey),

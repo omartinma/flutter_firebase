@@ -32,7 +32,6 @@ class _SavedSerieCardState extends State<SavedSerieCard> {
                             CircularProgressIndicator(),
                         imageUrl: widget.serie.posterPath,
                         fit: BoxFit.cover,
-                        height: 1000,
                       )),
                   Positioned(
                     top: 0,

@@ -7,6 +7,6 @@ Demo sample for meetup of Flutter Madrid (https://twitter.com/FlutterMadrid) usi
 <img width="497" alt="4" src="https://user-images.githubusercontent.com/11978998/74112370-6d5cc880-4b9c-11ea-9904-f54b6503e15d.png">
 <img width="497" alt="5" src="https://user-images.githubusercontent.com/11978998/74112372-6f268c00-4b9c-11ea-8545-c5c92d792982.png">
 
-# Requirements 1 #
+# Requirements #
 - Import in iOS project info.plist for GoogleServices
 - Create API key for IMDB(https://www.themoviedb.org/documentation/api) and add to constants file under lib/config/constants.dart

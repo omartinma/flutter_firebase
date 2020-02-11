@@ -63,7 +63,9 @@ class SeriesAPIController {
       serie.voteAverage = voteAverage;
       serie.genre = genreName;
       serie.overview = overview;
-      series.add(serie);
+      if (serie.posterPath.isNotEmpty) {
+        series.add(serie);
+      }
     }
     return series;
   }
@@ -80,9 +82,11 @@ class SeriesAPIController {
     series.document(id).delete();
   }
 
-    Future<List<Serie>> getSavedSeries() async {
+  Future<List<Serie>> getSavedSeries() async {
     String userUid = await UserController().getUserUID();
-    var snap = await Firestore.instance.collection("users/" + userUid + "/series").getDocuments();
+    var snap = await Firestore.instance
+        .collection("users/" + userUid + "/series")
+        .getDocuments();
     var series = new List<Serie>();
 
     for (var doc in snap.documents) {

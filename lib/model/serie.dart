@@ -24,7 +24,7 @@ class Serie {
       isInToDo: true,
       posterPath: json["posterPath"],
       backdropPath: json["backdropPath"],
-      voteAverage: json["voteAverage"],
+      voteAverage: json["voteAverage"].toDouble(),
       genre: json["genre"],
       overview: json["overview"]);
 

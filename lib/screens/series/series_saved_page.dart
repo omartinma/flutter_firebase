@@ -48,7 +48,7 @@ class _SeriesSavedPageState extends State<SeriesSavedPage> {
           );
         }
 
-        if (projectSnap.data.length > 0) {
+        if (projectSnap.hasData && projectSnap.data.length > 0) {
           return GridView.builder(
               gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisSpacing: 0,

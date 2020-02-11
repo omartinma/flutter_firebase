@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_firebase/config/constants.dart';
 import 'package:flutter_firebase/model/serie.dart';
-import 'package:flutter_firebase/services/series/series_controller.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
 import 'package:http/http.dart' as http;
 
@@ -59,7 +58,7 @@ class SeriesAPIController {
       serie.posterPath =
           posterPath != null ? (partialImageUrl + posterPath) : "";
       serie.backdropPath = backPath != null ? (partialImageUrl + backPath) : "";
-      serie.isInToDo = SeriesController().isSerieAdded(serie.id);
+      serie.isInToDo = await isSerieAdded(serie.id);
       serie.voteAverage = voteAverage;
       serie.genre = genreName;
       serie.overview = overview;
@@ -101,5 +100,14 @@ class SeriesAPIController {
         .snapshots();
     return snap.map((snapshot) =>
         snapshot.documents.map((doc) => Serie.fromMap(doc.data)).toList());
+  }
+
+  Future<bool> isSerieAdded(int id) async {
+    String userUid = await UserController().getUserUID();
+    final snapShot = await Firestore.instance
+        .collection("users/" + userUid + "/series")
+        .document(id.toString())
+        .get();
+    return (snapShot == null || !snapShot.exists) ? false : true;
   }
 }

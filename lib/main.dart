@@ -6,7 +6,9 @@ import 'package:flutter_firebase/screens/login/login_page.dart';
 import 'package:flutter_firebase/screens/series/series_home.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -22,21 +24,33 @@ class MyApp extends StatelessWidget {
         '/home/series_home': (BuildContext context) => new SeriesHomePage(),
         '/login': (BuildContext context) => new LoginPage()
       },
-      home: FutureBuilder<FirebaseUser>(
-        future: UserController().getUserAuthenticated(),
-        builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-          //
-          if (snapshot.connectionState == ConnectionState.done) {
-            // log error to console
-            if (snapshot.error != null) {
-              return Text(snapshot.error.toString());
-            }
-            return snapshot.hasData ? HomePage() : LoginPage();
-          } else {
-            return LoadingPage();
+      debugShowCheckedModeBanner: false,
+      initialRoute: "splash",
+      home: SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print("build");
+    return FutureBuilder<FirebaseUser>(
+      future: UserController().getUserAuthenticated(),
+      builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+        //
+        if (snapshot.connectionState == ConnectionState.done) {
+          // log error to console
+          if (snapshot.error != null) {
+            return Text(snapshot.error.toString());
           }
-        },
-      ),
+          return snapshot.hasData ? HomePage() : LoginPage();
+        } else {
+          return LoadingPage();
+        }
+      },
     );
   }
 }

@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/services/user/user_controller.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
+class HomePage extends StatelessWidget {
+  const HomePage({Key key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
